@@ -1,0 +1,16 @@
+{% extends "icecc/base.html" %}
+
+{% block icecc_content %}
+
+<p>
+ICECC running at {{scheduler.host}}:{{scheduler.port}} version {{scheduler.version}}; 
+Hosts: {{scheduler.hosts}}
+Jobs: {{scheduler.jobs}}
+</p>
+
+<p>
+The following commands are available at the scheduler:
+</p>
+{{help|linebreaks}}
+
+{% endblock %}

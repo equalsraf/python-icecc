@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+"""
+Command line icecream remote control
+"""
+from icecc.control import SchedulerControl
+import sys
+
+
+
+if __name__ == '__main__':
+
+    if len(sys.argv) < 3:
+        print "Usage: icecc_control <HOST> <CMD>"
+        sys.exit(-1)
+
+    __ctrl__ = SchedulerControl(sys.argv[1])
+
+    try:
+        print __ctrl__.run( " ".join(sys.argv[2:]), raw=True )
+    except Exception, e:
+        print e
+

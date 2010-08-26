@@ -1,0 +1,44 @@
+{% extends "icecc/base.html" %}
+
+{% block icecc_content %}
+
+<table>
+	<thead>
+	<tr>
+	<td>Name</td>
+	<td>Address</td>
+	<td>Arch</td>
+	<td>Speed</td>
+	<td>Jobs</td>
+	<td>Load</td>
+	</tr>
+	</thead>
+
+{% for cs in listcs %}
+	<tr>
+	{% for item in cs %}
+	<td>{{item}}</td>
+  	{% endfor %}
+
+	<td>
+		<form method="POST" action="{% url django_icecc.views.blockcs %}">
+			{% csrf_token %}
+			<input type="submit" value="Block CS">
+			<input name="host" type="hidden" value="{{cs.0}}"/>
+		</form>
+	</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% if blocks %}
+<h2>Blocked hosts</h2>
+
+<table>
+{% for host in blocks %}
+<tr><td>{{host}}</td></tr>
+
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

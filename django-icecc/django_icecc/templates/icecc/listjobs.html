@@ -1,0 +1,26 @@
+{% extends "icecc/base.html" %}
+
+{% block icecc_content %}
+
+<table>
+	<thead>
+	<tr>
+	<td>Id</td>
+	<td>State</td>
+	<td>From</td>
+	<td>CS</td>
+	<td>File</td>
+	</tr>
+	</thead>
+
+{% for cs in listjobs %}
+	<tr>
+	{% for item in cs %}
+	<td>{{item}}</td>
+  	{% endfor %}
+
+	</tr>
+{% endfor %}
+
+</table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>
+<a href="{% url django_icecc.views.summary %}">summary</a>
+<a href="{% url django_icecc.views.listcs %}">listcs</a>
+<a href="{% url django_icecc.views.internals %}">internals</a>
+<a href="{% url django_icecc.views.listjobs %}">listjobs</a>
+
+</p>
+
+{% block icecc_content %}
+
+
+{% endblock %}
+{% endblock %}
+

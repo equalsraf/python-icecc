@@ -1,0 +1,22 @@
+{% extends "icecc/base.html" %}
+
+
+{% block icecc_content %}
+
+{% for key,value in internals.items %}
+<h2>{{key}}</h2>
+
+<table>
+{% for entry in value %}
+ <tr>
+	 <td>{{entry.0}}</td>
+	 <td>{{entry.1}}</td>
+
+ </tr>
+{% endfor %}
+</table>
+
+{% endfor %}
+
+
+{% endblock %}
