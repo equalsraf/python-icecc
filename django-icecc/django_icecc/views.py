@@ -4,6 +4,7 @@ from django.http import Http404
 
 from icecc.control import SchedulerControl
 from django_icecc.forms import BlockForm
+from django.conf import settings
 
 from django_icecc import ICECC_SCHEDULER
 __scheduler__ = SchedulerControl(ICECC_SCHEDULER)
@@ -14,7 +15,8 @@ def listcs(request):
     """
     out = __scheduler__.runall(["listcs", "listblocks"])
     return render_to_response( 'icecc/listcs.html', 
-                    {'listcs': out[0], 'blocks' : out[1] }, 
+		    {'listcs': out[0], 'blocks' : out[1], 
+	             'readonly' : getattr(settings, 'ICECC_READONLY', False) }, 
                     context_instance=RequestContext(request) )
 
 
@@ -31,7 +33,7 @@ def blockcs(request):
     POST target to remove CS hosts
     """
 
-    if request.method != 'POST':
+    if request.method != 'POST' or getattr(settings, 'ICECC_READONLY', False):
         raise Http404
 
     form = BlockForm(request.POST)

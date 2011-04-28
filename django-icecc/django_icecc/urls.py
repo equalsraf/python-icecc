@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     (r'^listjobs/?$', listjobs),
     (r'^internals/?$', internals),
     (r'^blockcs/?$', blockcs),
-     (r'^/?$', summary),
+    (r'^/?$', summary),
     
 )

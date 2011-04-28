@@ -20,6 +20,8 @@
 	<td>{{item}}</td>
   	{% endfor %}
 
+	{% if readonly %}
+	{% else %}
 	<td>
 		<form method="POST" action="{% url django_icecc.views.blockcs %}">
 			{% csrf_token %}
@@ -27,6 +29,7 @@
 			<input name="host" type="hidden" value="{{cs.0}}"/>
 		</form>
 	</td>
+	{% endif %}
 	</tr>
 {% endfor %}
 </table>
